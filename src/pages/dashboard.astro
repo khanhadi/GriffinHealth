@@ -1,32 +1,80 @@
 ---
 import AppLayout from '@/layouts/AppLayout.astro';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { MetricCard } from '@/components/metric-card';
+import SleepAnalysis from '@/components/sleep-analysis';
 ---
 
 <AppLayout title="Dashboard | GriffinHealth">
-  <div class="space-y-4">
+  <div class="space-y-4 p-6">
     <h1 class="text-3xl font-bold">Dashboard</h1>
 
-    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>Blood Pressure</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p class="text-2xl font-bold">120/80</p>
-        </CardContent>
-      </Card>
+    {/* Metric Cards Row */}
+    <div class="grid grid-cols-1 gap-3 sm:grid-cols-5">
+      {/* Changed to grid with 5 columns */}
+      <div class="w-full">
+        {/* Removed fixed width to allow equal sizing */}
+        <MetricCard
+          title="SpO2"
+          value={98}
+          subtitle="Oxygen Saturation %"
+          trend={1.2}
+          trendIndicator="up"
+        />
+      </div>
+      <div class="w-full">
+        <MetricCard
+          title="Heart Rate"
+          value={72}
+          subtitle="Current BPM"
+          trend={2.5}
+          trendIndicator="up"
+        />
+      </div>
+      <div class="w-full">
+        <MetricCard
+          title="Blood Glucose"
+          value={95}
+          subtitle="mg/dL"
+          trend={-3.2}
+          trendIndicator="down"
+        />
+      </div>
+      <div class="w-full">
+        <MetricCard
+          title="Respiratory Rate"
+          value={16}
+          subtitle="Breaths per minute"
+          trend={0.5}
+          trendIndicator="up"
+        />
+      </div>
+      <div class="w-full">
+        <MetricCard
+          title="Blood Pressure"
+          value={120}
+          subtitle="Systolic mmHg"
+          trend={-1.5}
+          trendIndicator="down"
+        />
+      </div>
+    </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Heart Rate</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p class="text-2xl font-bold">72 BPM</p>
-        </CardContent>
-      </Card>
-
-      <!-- Add more cards as needed -->
+    {/* Sleep Analysis */}
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div class="col-span-1">
+        <Card className="w-[88%]">
+          <CardHeader>
+            <CardTitle>Sleep Analysis</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div class="h-[180px]">
+              <SleepAnalysis client:load />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+      {/* Other content goes here */}
     </div>
   </div>
 </AppLayout>
