@@ -1,6 +1,6 @@
-// src/components/role-selector.tsx
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { UserCircle2, Stethoscope } from 'lucide-react';
 
 interface RoleSelectorProps {
   value: string;
@@ -24,21 +24,12 @@ export function RoleSelector({ value, onValueChange }: RoleSelectorProps) {
           />
           <Label
             htmlFor="patient"
-            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-slate-100 p-4 hover:bg-slate-200 peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-slate-100 p-4 hover:bg-slate-200 peer-data-[state=checked]:border-persian-green-600 dark:bg-slate-800 dark:hover:bg-slate-700 dark:peer-data-[state=checked]:border-persian-green-400 [&:has([data-state=checked])]:border-persian-green-600 dark:[&:has([data-state=checked])]:border-persian-green-400"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="mb-2 h-6 w-6"
-            >
-              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
+            <UserCircle2
+              className="mb-2 h-6 w-6 text-persian-green-600 dark:text-persian-green-400"
+              strokeWidth={1.5}
+            />
             Patient
           </Label>
         </div>
@@ -46,28 +37,12 @@ export function RoleSelector({ value, onValueChange }: RoleSelectorProps) {
           <RadioGroupItem value="doctor" id="doctor" className="peer sr-only" />
           <Label
             htmlFor="doctor"
-            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-slate-100 p-4 hover:bg-slate-200 peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-slate-100 p-4 hover:bg-slate-200 peer-data-[state=checked]:border-persian-green-600 dark:bg-slate-800 dark:hover:bg-slate-700 dark:peer-data-[state=checked]:border-persian-green-400 [&:has([data-state=checked])]:border-persian-green-600 dark:[&:has([data-state=checked])]:border-persian-green-400"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="mb-2 h-6 w-6"
-            >
-              <path d="M8.56 3.69a9 9 0 0 0-2.92 1.95" />
-              <path d="M3.69 8.56A9 9 0 0 0 3 12" />
-              <path d="M3.69 15.44a9 9 0 0 0 1.95 2.92" />
-              <path d="M8.56 20.31A9 9 0 0 0 12 21" />
-              <path d="M15.44 20.31a9 9 0 0 0 2.92-1.95" />
-              <path d="M20.31 15.44A9 9 0 0 0 21 12" />
-              <path d="M20.31 8.56a9 9 0 0 0-1.95-2.92" />
-              <path d="M15.44 3.69A9 9 0 0 0 12 3" />
-              <circle cx="12" cy="12" r="2" />
-            </svg>
+            <Stethoscope
+              className="mb-2 h-6 w-6 text-persian-green-600 dark:text-persian-green-400"
+              strokeWidth={1.5}
+            />
             Doctor
           </Label>
         </div>
