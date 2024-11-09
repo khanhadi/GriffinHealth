@@ -2,7 +2,6 @@
 import Layout from '@/layouts/Layout.astro';
 import { Bird } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import '@/styles/globals.css';
 ---
 
 <Layout title="GriffinHealth | Intelligent Health Monitoring">
@@ -46,7 +45,7 @@ import '@/styles/globals.css';
             healthcare management.
           </p>
           <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="/app">
+            <a href="/dashboard">
               <Button client:load size="lg" className="px-8"
                 >View Dashboard</Button
               >
