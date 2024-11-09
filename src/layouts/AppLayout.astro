@@ -1,0 +1,19 @@
+---
+import Layout from './Layout.astro';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { AppSidebarWithProvider } from '@/components/sidebar-provider';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+  <AppSidebarWithProvider client:load>
+    <div class="p-4">
+      <slot />
+    </div>
+  </AppSidebarWithProvider>
+</Layout>
