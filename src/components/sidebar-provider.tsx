@@ -1,7 +1,6 @@
 // src/components/AppSidebarWithProvider.tsx
-import React from 'react';
 import { SidebarProvider } from '@/components/ui/sidebar';
-import { AppSidebar } from './app-sidebar';
+import AppSidebar from './app-sidebar';
 
 export function AppSidebarWithProvider({
   children,

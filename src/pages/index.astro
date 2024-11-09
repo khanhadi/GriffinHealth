@@ -1,7 +1,17 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { Bird } from 'lucide-react';
+import {
+  Bird,
+  Heart,
+  Calendar,
+  Activity,
+  Shield,
+  Star,
+  ArrowRight,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { ThemeToggle } from '@/components/theme-toggle';
 ---
 
 <Layout title="GriffinHealth | Intelligent Health Monitoring">
@@ -13,14 +23,25 @@ import { Button } from '@/components/ui/button';
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <a href="/" class="flex items-center gap-2">
-            <Bird className="h-8 w-8 text-primary" />
-            <span class="text-xl font-bold text-foreground">GriffinHealth</span>
+            <div
+              class="rounded-full bg-gradient-to-r from-persian-green-500 to-persian-green-600 p-2"
+            >
+              <Bird className="h-6 w-6 text-white" strokeWidth={1.5} />
+            </div>
+            <span class="text-xl font-semibold">GriffinHealth</span>
           </a>
           <div class="flex items-center gap-4">
+            <a href="#features">
+              <Button variant="ghost">Features</Button>
+            </a>
+            <a href="#testimonials">
+              <Button variant="ghost">Testimonials</Button>
+            </a>
             <a href="/dashboard">
               <Button variant="ghost">Dashboard</Button>
             </a>
-            <a href="/login">
+            <ThemeToggle client:load />
+            <a href="/sign-in">
               <Button>Sign In</Button>
             </a>
           </div>
@@ -28,30 +49,212 @@ import { Button } from '@/components/ui/button';
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="px-4 pb-16 pt-24 sm:px-6 lg:px-8">
+    <!-- Hero Section with Floating Elements -->
+    <section class="relative overflow-hidden px-4 pb-16 pt-32 sm:px-6 lg:px-8">
+      <div class="absolute inset-0 -z-10">
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-persian-green-500/10 to-transparent dark:from-persian-green-500/5"
+        >
+        </div>
+        <div class="absolute right-0 top-0 -translate-y-1/4 translate-x-1/4">
+          <div
+            class="h-96 w-96 rounded-full bg-persian-green-200/50 blur-3xl dark:bg-persian-green-900/20"
+          >
+          </div>
+        </div>
+      </div>
+
       <div class="mx-auto max-w-7xl">
         <div class="text-center">
-          <h1
-            class="text-4xl font-bold tracking-tight text-foreground sm:text-6xl"
+          <div
+            class="mb-8 inline-flex items-center rounded-full border bg-background/95 px-4 py-1.5"
           >
-            Your Personal Health Guardian
+            <span class="text-sm font-medium"
+              >🎉 Now with AI-powered health insights</span
+            >
+          </div>
+          <h1
+            class="text-5xl font-bold tracking-tight text-foreground sm:text-7xl"
+          >
+            Your Personal
+            <span class="text-persian-green-600 dark:text-persian-green-400"
+              >Health Guardian</span
+            >
           </h1>
           <p
-            class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground"
+            class="mx-auto mt-6 max-w-2xl text-xl leading-8 text-muted-foreground"
           >
-            Intelligent health monitoring powered by AI. Track your vitals,
-            manage appointments, and receive personalized insights for better
-            healthcare management.
+            Experience the future of healthcare management. Track vitals, manage
+            appointments, and receive AI-powered insights for better health
+            decisions.
           </p>
           <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="/dashboard">
-              <Button client:load size="lg" className="px-8"
-                >View Dashboard</Button
+            <a href="/sign-in">
+              <Button
+                client:load
+                size="lg"
+                className="bg-persian-green-600 px-8 hover:bg-persian-green-700 dark:bg-persian-green-500 dark:hover:bg-persian-green-600"
               >
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </a>
             <a href="#features">
-              <Button client:load variant="link" className="text-foreground">
+              <Button client:load variant="outline" size="lg">
+                See how it works
+              </Button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section
+      id="features"
+      class="bg-dot-pattern dark:bg-dot-pattern-dark py-24"
+    >
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="mb-16 text-3xl font-bold tracking-tight sm:text-4xl">
+            Everything you need for better health monitoring
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                icon: Heart,
+                title: 'Real-time Monitoring',
+                description:
+                  'Track your vital signs in real-time with our advanced sensors and get instant alerts.',
+              },
+              {
+                icon: Calendar,
+                title: 'Smart Scheduling',
+                description:
+                  'AI-powered appointment management that adapts to your lifestyle and health needs.',
+              },
+              {
+                icon: Activity,
+                title: 'Health Analytics',
+                description:
+                  'Comprehensive health insights powered by machine learning algorithms.',
+              },
+              {
+                icon: Shield,
+                title: 'Data Security',
+                description:
+                  'Bank-grade encryption and security protocols to protect your health data.',
+              },
+              {
+                icon: Star,
+                title: 'Personalized Care',
+                description:
+                  'Get tailored health recommendations based on your unique health profile.',
+              },
+              {
+                icon: Bird,
+                title: '24/7 Support',
+                description:
+                  'Round-the-clock access to health professionals and support staff.',
+              },
+            ].map((feature) => (
+              <Card>
+                <CardContent className="pt-6">
+                  <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-persian-green-100 dark:bg-persian-green-900/50">
+                    <feature.icon className="h-6 w-6 text-persian-green-600 dark:text-persian-green-400" />
+                  </div>
+                  <h3 class="mb-2 text-lg font-semibold">{feature.title}</h3>
+                  <p class="text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section
+      id="testimonials"
+      class="bg-persian-green-50/50 py-24 dark:bg-persian-green-950/10"
+    >
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-16 text-center">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+            Trusted by thousands of users
+          </h2>
+          <p class="mt-4 text-lg text-muted-foreground">
+            See what our users have to say about their experience with
+            GriffinHealth
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {
+            [1, 2, 3].map(() => (
+              <Card>
+                <CardContent className="pt-6">
+                  <div class="mb-4 flex gap-1">
+                    {Array(5)
+                      .fill(null)
+                      .map(() => (
+                        <Star className="h-5 w-5 fill-persian-green-500 text-persian-green-500 dark:fill-persian-green-400 dark:text-persian-green-400" />
+                      ))}
+                  </div>
+                  <p class="mb-4">
+                    "GriffinHealth has transformed how I manage my health. The
+                    AI insights are incredibly helpful and the interface is
+                    intuitive."
+                  </p>
+                  <div class="flex items-center gap-4">
+                    <div class="h-10 w-10 rounded-full bg-persian-green-200 dark:bg-persian-green-900" />
+                    <div>
+                      <p class="font-semibold">Sarah Johnson</p>
+                      <p class="text-sm text-muted-foreground">
+                        Healthcare Professional
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div
+          class="relative isolate overflow-hidden rounded-3xl bg-persian-green-600 px-6 py-24 text-center shadow-2xl dark:bg-persian-green-900 sm:px-16"
+        >
+          <h2
+            class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl"
+          >
+            Start your journey to better health today
+          </h2>
+          <p
+            class="mx-auto mt-6 max-w-xl text-lg leading-8 text-persian-green-100"
+          >
+            Join thousands of satisfied users who have transformed their health
+            management with GriffinHealth.
+          </p>
+          <div class="mt-10 flex items-center justify-center gap-x-6">
+            <a href="/sign-in">
+              <Button
+                client:load
+                size="lg"
+                variant="secondary"
+                className="px-8"
+              >
+                Get Started
+              </Button>
+            </a>
+            <a href="#features">
+              <Button client:load variant="link" className="text-white">
                 Learn more <span aria-hidden="true" class="ml-2">→</span>
               </Button>
             </a>
@@ -61,3 +264,23 @@ import { Button } from '@/components/ui/button';
     </section>
   </main>
 </Layout>
+
+<style>
+  .bg-dot-pattern {
+    background-image: radial-gradient(
+      rgba(39, 170, 153, 0.3) 1px,
+      transparent 1px
+    );
+    background-size: 32px 32px;
+    background-color: rgba(39, 170, 153, 0.03);
+  }
+
+  .dark .bg-dot-pattern-dark {
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.15) 1px,
+      transparent 1px
+    );
+    background-size: 32px 32px;
+    background-color: rgba(39, 170, 153, 0.03);
+  }
+</style>
