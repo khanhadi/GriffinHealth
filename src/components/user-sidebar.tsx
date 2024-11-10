@@ -12,6 +12,7 @@ import {
   ChevronLeft,
   User2,
   type LucideIcon,
+  BrainCircuitIcon,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -51,6 +52,12 @@ const NAV_ITEMS: {
       title: 'Health Metrics',
       icon: Activity,
       href: '/metrics',
+      badge: null,
+    },
+    {
+      title: 'AI Analysis',
+      icon: BrainCircuitIcon,
+      href: '/ai-analysis',
       badge: null,
     },
     {
