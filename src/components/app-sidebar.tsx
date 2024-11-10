@@ -48,12 +48,6 @@ const NAV_ITEMS: {
 } = {
   main: [
     {
-      title: 'Dashboard',
-      icon: Home,
-      href: '/dashboard',
-      badge: null,
-    },
-    {
       title: 'Health Metrics',
       icon: Activity,
       href: '/metrics',
