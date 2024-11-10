@@ -1,0 +1,182 @@
+---
+import UserLayout from '@/layouts/UserLayout.astro';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import HealthInsightCard from '@/components/health-insight-card';
+import { Heart, Activity, Moon, Scale } from 'lucide-react';
+
+// Quick metrics data
+const quickMetrics = [
+  {
+    title: 'Heart Rate',
+    value: '72',
+    unit: 'bpm',
+    trend: -2,
+    icon: Heart,
+    tooltip: 'Current heart rate measured in beats per minute',
+  },
+  {
+    title: 'Sleep Score',
+    value: '85',
+    unit: '%',
+    trend: 5,
+    icon: Moon,
+    tooltip: 'Overall sleep quality score based on duration and patterns',
+  },
+  {
+    title: 'Daily Steps',
+    value: '8.5k',
+    trend: 1,
+    icon: Activity,
+    tooltip: 'Total steps taken today',
+  },
+  {
+    title: 'Current Weight',
+    value: '75.5',
+    unit: 'kg',
+    trend: -0.5,
+    icon: Scale,
+    tooltip: 'Current body weight measurement',
+  },
+];
+
+// Detailed health data
+const healthData: any = {
+  cardiac: {
+    metrics: {
+      'Average Heart Rate': { value: '108.26', unit: 'bpm' },
+      'Minimum Heart Rate': { value: '43', unit: 'bpm' },
+      'Maximum Heart Rate': { value: '188', unit: 'bpm' },
+      'Resting Heart Rate': { value: '65', unit: 'bpm' },
+    },
+    comments:
+      'No significant risk factors detected. Heart rate variations are within normal range.',
+  },
+  metabolic: {
+    metrics: {
+      'Average Weight': { value: '75.5', unit: 'kg' },
+      BMI: { value: '24.2', unit: '' },
+      'Body Fat Percentage': { value: '18.5', unit: '%' },
+      'Metabolic Age': { value: '32', unit: 'years' },
+    },
+    comments:
+      'Metabolic indicators are within healthy ranges. Consider maintaining current dietary habits.',
+  },
+  sleep: {
+    metrics: {
+      'Average Duration': { value: '7.2', unit: 'hours' },
+      'Deep Sleep': { value: '1.8', unit: 'hours' },
+      'Sleep Quality Score': { value: '85', unit: '%' },
+      'Sleep Consistency': { value: '90', unit: '%' },
+    },
+    comments:
+      'Good sleep quality detected. Maintain consistent sleep schedule for optimal rest.',
+  },
+  activity: {
+    metrics: {
+      'Average Walking Speed': { value: '4.04', unit: 'km/hr' },
+      'Daily Steps Average': { value: '8,500', unit: 'steps' },
+      'Active Minutes': { value: '45', unit: 'min/day' },
+      'Weekly Exercise Sessions': { value: '4', unit: 'sessions' },
+    },
+    comments:
+      'Activity levels meet recommended guidelines. Consider increasing intensity for better results.',
+  },
+};
+
+const categories = {
+  cardiac: {
+    title: 'Cardiac Analysis',
+    icon: Heart,
+  },
+  metabolic: {
+    title: 'Metabolic Analysis',
+    icon: Scale,
+  },
+  sleep: {
+    title: 'Sleep Analysis',
+    icon: Moon,
+  },
+  activity: {
+    title: 'Activity Analysis',
+    icon: Activity,
+  },
+};
+---
+
+<UserLayout title="Your Analytics | GriffinHealth">
+  <div class="container flex min-h-screen p-6">
+    <div class="flex-1 space-y-6">
+      {/* Header Section */}
+      <div class="flex items-center justify-between">
+        <div class="space-y-1">
+          <h1 class="text-3xl font-bold tracking-tight">Your Analytics</h1>
+          <p class="text-lg text-muted-foreground">
+            AI-Powered Health Analysis & Insights
+          </p>
+        </div>
+      </div>
+
+      {/* Quick Metrics Overview */}
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {
+          quickMetrics.map((metric) => (
+            <HealthInsightCard
+              client:load
+              title={metric.title}
+              value={metric.value}
+              unit={metric.unit}
+              trend={metric.trend}
+              icon={metric.icon}
+              tooltip={metric.tooltip}
+            />
+          ))
+        }
+      </div>
+
+      {/* Detailed Analysis Sections */}
+      <div class="grid gap-6">
+        <div class="grid gap-6 md:grid-cols-2">
+          {
+            Object.entries(categories).map(([key, category]) => {
+              const categoryData = healthData[key];
+
+              return (
+                <Card>
+                  <CardHeader>
+                    <div class="flex items-center gap-2 space-x-2">
+                      <category.icon className="h-5 w-5 text-primary" />
+                      <CardTitle>{category.title}</CardTitle>
+                    </div>
+                    <CardDescription>{categoryData.comments}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div class="grid gap-4">
+                      {Object.entries(categoryData.metrics).map(
+                        ([metricName, metricData]: any) => (
+                          <div class="flex items-center justify-between border-b pb-2">
+                            <span class="text-sm font-medium">
+                              {metricName}
+                            </span>
+                            <span class="text-sm text-muted-foreground">
+                              {metricData.value} {metricData.unit}
+                            </span>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</UserLayout>

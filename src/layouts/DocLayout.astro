@@ -1,0 +1,18 @@
+---
+import Layout from './Layout.astro';
+import { DocSidebarWithProvider } from '@/components/doc-sidebar-provider';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+  <DocSidebarWithProvider client:load>
+    <div class="p-4">
+      <slot />
+    </div>
+  </DocSidebarWithProvider>
+</Layout>

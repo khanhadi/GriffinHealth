@@ -1,0 +1,203 @@
+---
+import UserLayout from '@/layouts/UserLayout.astro';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Calendar } from '@/components/ui/calendar';
+import {
+  MapPin,
+  Video,
+  Phone,
+  Plus,
+  ChevronRight,
+  AlertCircle,
+} from 'lucide-react';
+import NextAppointmentCard from '@/components/next-appointment-card';
+import AppointmentsTabs from '@/components/appointments-tabs';
+import type { Appointment } from '@/components/appointments-list';
+
+// Sample appointments data
+const upcomingAppointments: Appointment[] = [
+  {
+    id: 1,
+    doctor: {
+      name: 'Dr. Sarah Miller',
+      specialty: 'Cardiologist',
+      image: '/avatars/doctor-1.png',
+    },
+    date: '2024-11-15',
+    time: '10:30 AM',
+    type: 'video',
+    location: 'Video Consultation',
+    status: 'confirmed',
+    duration: '30 min',
+  },
+  {
+    id: 2,
+    doctor: {
+      name: 'Dr. James Wilson',
+      specialty: 'General Practitioner',
+      image: '/avatars/doctor-2.png',
+    },
+    date: '2024-11-18',
+    time: '2:00 PM',
+    type: 'in-person',
+    location: 'Medical Center, Room 204',
+    status: 'pending',
+    duration: '45 min',
+  },
+];
+
+const pastAppointments: Appointment[] = [
+  {
+    id: 3,
+    doctor: {
+      name: 'Dr. Emily Chen',
+      specialty: 'Nutritionist',
+      image: '/avatars/doctor-3.png',
+    },
+    date: '2024-11-01',
+    time: '11:00 AM',
+    type: 'in-person',
+    location: 'Wellness Center',
+    status: 'completed',
+    duration: '60 min',
+  },
+];
+---
+
+<UserLayout title="Appointments | GriffinHealth">
+  <div class="container flex min-h-screen gap-8 p-6">
+    {/* Main Content */}
+    <div class="flex flex-1 flex-col gap-8 space-y-8">
+      {/* Header */}
+      <div class="flex items-center justify-between">
+        <div class="space-y-1">
+          <h1 class="text-3xl font-bold tracking-tight">Appointments</h1>
+          <p class="text-lg text-muted-foreground">
+            Manage your healthcare appointments
+          </p>
+        </div>
+        <Button size="lg" className="h-10">
+          <Plus className="mr-2 h-5 w-5" />
+          Book Appointment
+        </Button>
+      </div>
+
+      {/* Quick Actions */}
+      <div class="grid gap-6 md:grid-cols-3">
+        <NextAppointmentCard
+          appointment={upcomingAppointments[0]}
+          client:load
+        />
+
+        <Card className="overflow-hidden">
+          <CardHeader
+            className="flex flex-row items-center justify-between space-y-0 pb-2 pt-6"
+          >
+            <CardTitle className="text-sm font-medium">
+              Pending Approvals
+            </CardTitle>
+            <AlertCircle className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div class="flex items-baseline gap-2">
+              <div class="text-2xl font-bold">1</div>
+              <p class="text-sm text-muted-foreground">pending</p>
+            </div>
+            <p class="mt-2 text-xs text-muted-foreground">
+              Appointment waiting for confirmation
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card className="overflow-hidden">
+          <CardHeader
+            className="flex flex-row items-center justify-between space-y-0 pb-2 pt-6"
+          >
+            <CardTitle className="text-sm font-medium">Past Month</CardTitle>
+            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div class="flex items-baseline gap-2">
+              <div class="text-2xl font-bold">3</div>
+              <p class="text-sm text-muted-foreground">completed</p>
+            </div>
+            <p class="mt-2 text-xs text-muted-foreground">
+              Appointments in last 30 days
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Appointments Tabs */}
+      <AppointmentsTabs
+        upcomingAppointments={upcomingAppointments}
+        pastAppointments={pastAppointments}
+        client:load
+      />
+    </div>
+
+    {/* Sidebar */}
+    <div class="w-[380px] space-y-6">
+      <Card className="overflow-hidden shadow-md">
+        <CardHeader className="space-y-1">
+          <CardTitle>Calendar</CardTitle>
+          <CardDescription>View your appointment schedule</CardDescription>
+        </CardHeader>
+        <CardContent className="-mt-2">
+          <Calendar
+            mode="single"
+            selected={new Date()}
+            className="rounded-md border"
+            client:load
+          />
+        </CardContent>
+      </Card>
+
+      <Card className="overflow-hidden shadow-md">
+        <CardHeader className="space-y-1">
+          <CardTitle>Quick Access</CardTitle>
+          <CardDescription>Common appointment actions</CardDescription>
+        </CardHeader>
+        <CardContent className="-mt-2 space-y-3">
+          <Button
+            variant="outline"
+            className="relative w-full justify-start pl-9"
+            asChild
+          >
+            <a href="#">
+              <Video className="absolute left-2.5 h-4 w-4 text-primary" />
+              Join Next Video Call
+            </a>
+          </Button>
+          <Button
+            variant="outline"
+            className="relative w-full justify-start pl-9"
+            asChild
+          >
+            <a href="#">
+              <Phone className="absolute left-2.5 h-4 w-4 text-primary" />
+              Call Doctor's Office
+            </a>
+          </Button>
+          <Button
+            variant="outline"
+            className="relative w-full justify-start pl-9"
+            asChild
+          >
+            <a href="#">
+              <MapPin className="absolute left-2.5 h-4 w-4 text-primary" />
+              Get Directions
+            </a>
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</UserLayout>
