@@ -137,25 +137,27 @@ export default function AppSidebar() {
             isCollapsed && 'justify-center'
           )}
         >
-          <div
-            className={cn(
-              'flex items-center',
-              isCollapsed ? 'w-full justify-center' : 'gap-2 px-2'
-            )}
-          >
-            <div className="flex items-center justify-center rounded-full bg-gradient-to-r from-persian-green-500 to-persian-green-600 p-2">
-              <Bird
-                className={cn(
-                  'text-white',
-                  isCollapsed ? 'h-4 w-4' : 'h-5 w-5'
-                )}
-                strokeWidth={1.5}
-              />
+          <a href="/">
+            <div
+              className={cn(
+                'flex items-center',
+                isCollapsed ? 'w-full justify-center' : 'gap-2 px-2'
+              )}
+            >
+              <div className="flex items-center justify-center rounded-full bg-gradient-to-r from-persian-green-500 to-persian-green-600 p-2">
+                <Bird
+                  className={cn(
+                    'text-white',
+                    isCollapsed ? 'h-4 w-4' : 'h-5 w-5'
+                  )}
+                  strokeWidth={1.5}
+                />
+              </div>
+              {!isCollapsed && (
+                <span className="text-xl font-semibold">GriffinHealth</span>
+              )}
             </div>
-            {!isCollapsed && (
-              <span className="text-xl font-semibold">GriffinHealth</span>
-            )}
-          </div>
+          </a>
           <Button
             variant="ghost"
             size="icon"
