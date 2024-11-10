@@ -19,7 +19,7 @@ Griffin Health perfectly aligns with the theme "Travelling Through Time." By ana
 npm install
 ```
 
-2. Create a `.env` file in the root directory and add your OpenAI API key: (this is already included in the submission zip)
+2. Create a `.env` file in the root directory and add your OpenAI API key:
 ```env
 PUBLIC_OPENAI_API_KEY=your-openai-api-key-here
 ```
@@ -69,4 +69,4 @@ Griffin Health aimed to integrate Apple Health data to provide a comprehensive, 
 
 ## Conclusion
 
-To end our project documentation, our team would like to say thank you for this incredible opportunity! Our first hackathon experience at GreatUniHack was a lot of fun — we loved brainstorming ideas, learning new things, and working together to bring our ideas to life. We’ve got a bunch of other features in mind, but our main goal was to create a solid and innovative proof of concept giving the time constraints. Hopefully, Leeds Griffins was a great representation of the University of Leeds :)
+To end our project documentation, our team would like to say thank you for this incredible opportunity! Our first hackathon experience at GreatUniHack was a lot of fun — we loved brainstorming ideas, learning new things, and working together to bring our ideas to life. We’ve got a bunch of other features in mind, but our main goal was to create a solid and innovative proof of concept giving the time constraints. Hopefully, Leeds Griffins was a great representation of the University of Leeds :)💚
