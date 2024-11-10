@@ -14,11 +14,20 @@ Griffin Health perfectly aligns with the theme "Travelling Through Time." By ana
 
 ---
 
-## Usage
+1. Install dependencies:
+```bash
+npm install
+```
 
-`npm install`
+2. Create a `.env` file in the root directory and add your OpenAI API key: (this is already included in the submission zip)
+```env
+PUBLIC_OPENAI_API_KEY=your-openai-api-key-here
+```
 
-`npm run dev`
+3. Start the development server:
+```bash
+npm run dev
+```
 
 ---
 
@@ -53,7 +62,7 @@ Griffin Health aimed to integrate Apple Health data to provide a comprehensive, 
 ## Technology Stack
 
 - Programming Languages: HTML, CSS, JavaScript, TypeScript
-- Libraries/Frameworks: React, Astro, Chadsn UI Library, OpenAI API
+- Libraries/Frameworks: React, Astro, shadcn/ui, OpenAI API
 - Tools: RAG, Swarm AI
 
 ---
