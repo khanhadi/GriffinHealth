@@ -1,0 +1,293 @@
+---
+import DocLayout from '@/layouts/DocLayout.astro';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import {
+  Bell,
+  Calendar,
+  Users,
+  AlertTriangle,
+  Clock,
+  Activity,
+  BadgePlus,
+  Search,
+} from 'lucide-react';
+import PatientListTable from '@/components/patient-list-table';
+import AppointmentCalendar from '@/components/appointment-calendar';
+import { Input } from '@/components/ui/input';
+
+const criticalAlerts = [
+  {
+    patientName: 'Sarah Johnson',
+    alert: 'Blood glucose spike',
+    time: '10 mins ago',
+    severity: 'high',
+  },
+  {
+    patientName: 'Michael Chen',
+    alert: 'Irregular heartbeat detected',
+    time: '1 hour ago',
+    severity: 'medium',
+  },
+  {
+    patientName: 'Emma Davis',
+    alert: 'Missed medication schedule',
+    time: '2 hours ago',
+    severity: 'low',
+  },
+];
+
+const todayAppointments = [
+  {
+    time: '09:00 AM',
+    patient: 'John Smith',
+    type: 'Follow-up',
+    status: 'Checked In',
+  },
+  {
+    time: '10:30 AM',
+    patient: 'Sarah Johnson',
+    type: 'Regular Checkup',
+    status: 'Scheduled',
+  },
+  {
+    time: '02:00 PM',
+    patient: 'Michael Chen',
+    type: 'Urgent Care',
+    status: 'Waiting',
+  },
+];
+---
+
+<DocLayout title="Doctor Dashboard | GriffinHealth">
+  <div class="space-y-6 p-6">
+    {/* Header Section */}
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="text-3xl font-bold">Welcome, Dr. Anderson</h1>
+        <p class="text-muted-foreground">
+          Monday, November 10, 2024 | 8 Appointments Today
+        </p>
+      </div>
+      <div class="flex gap-4">
+        <Button variant="outline" className="gap-2">
+          <BadgePlus className="h-4 w-4" />
+          New Patient
+        </Button>
+        <Button className="gap-2">
+          <Bell className="h-4 w-4" />
+          <span class="relative flex h-2 w-2">
+            <span
+              class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"
+            ></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-red-500"
+            ></span>
+          </span>
+        </Button>
+      </div>
+    </div>
+
+    {/* Quick Stats */}
+    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <Card>
+        <CardContent className="flex items-center justify-between p-6">
+          <div class="space-y-1">
+            <p class="text-sm text-muted-foreground">Total Patients</p>
+            <p class="text-2xl font-bold">248</p>
+            <p class="text-xs text-muted-foreground">+12 this month</p>
+          </div>
+          <Users className="h-8 w-8 text-muted-foreground" />
+        </CardContent>
+      </Card>
+      <Card>
+        <CardContent className="flex items-center justify-between p-6">
+          <div class="space-y-1">
+            <p class="text-sm text-muted-foreground">Today's Appointments</p>
+            <p class="text-2xl font-bold">8</p>
+            <p class="text-xs text-muted-foreground">2 urgent care</p>
+          </div>
+          <Calendar className="h-8 w-8 text-muted-foreground" />
+        </CardContent>
+      </Card>
+      <Card>
+        <CardContent className="flex items-center justify-between p-6">
+          <div class="space-y-1">
+            <p class="text-sm text-muted-foreground">Critical Alerts</p>
+            <p class="text-2xl font-bold text-red-500">3</p>
+            <p class="text-xs text-muted-foreground">Requiring attention</p>
+          </div>
+          <AlertTriangle className="h-8 w-8 text-red-500" />
+        </CardContent>
+      </Card>
+      <Card>
+        <CardContent className="flex items-center justify-between p-6">
+          <div class="space-y-1">
+            <p class="text-sm text-muted-foreground">Average Visit Time</p>
+            <p class="text-2xl font-bold">24m</p>
+            <p class="text-xs text-muted-foreground">Last 7 days</p>
+          </div>
+          <Clock className="h-8 w-8 text-muted-foreground" />
+        </CardContent>
+      </Card>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-[2fr,1fr]">
+      {/* Main Content Area */}
+      <div class="space-y-6">
+        {/* Patient Search */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Quick Patient Lookup</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div class="flex gap-4">
+              <Input
+                placeholder="Search patients by name or ID..."
+                className="flex-1"
+              />
+              <Button>
+                <Search className="h-4 w-4" />
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Today's Schedule */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Today's Schedule</CardTitle>
+            <CardDescription>
+              Upcoming appointments and patient status
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ScrollArea className="h-[300px] pr-4">
+              <div class="space-y-4">
+                {
+                  todayAppointments.map((appointment) => (
+                    <div class="flex items-center justify-between border-b pb-4">
+                      <div class="flex items-center gap-4">
+                        <div class="text-sm font-medium">
+                          {appointment.time}
+                        </div>
+                        <div>
+                          <div class="font-medium">{appointment.patient}</div>
+                          <div class="text-sm text-muted-foreground">
+                            {appointment.type}
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <Button
+                          variant={
+                            appointment.status === 'Waiting'
+                              ? 'destructive'
+                              : appointment.status === 'Checked In'
+                                ? 'default'
+                                : 'outline'
+                          }
+                          size="sm"
+                        >
+                          {appointment.status}
+                        </Button>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </ScrollArea>
+          </CardContent>
+        </Card>
+
+        {/* Weekly Calendar Overview */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Calendar Overview</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div class="h-[300px]">
+              <AppointmentCalendar client:load />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Side Panel */}
+      <div class="space-y-6">
+        {/* Critical Alerts */}
+        <Card className="border-red-200">
+          <CardHeader>
+            <div class="flex items-center justify-between">
+              <CardTitle className="text-red-500">Critical Alerts</CardTitle>
+              <AlertTriangle className="h-5 w-5 text-red-500" />
+            </div>
+          </CardHeader>
+          <CardContent>
+            <ScrollArea className="h-[250px] pr-4">
+              <div class="space-y-4">
+                {
+                  criticalAlerts.map((alert) => (
+                    <div class="flex items-start justify-between border-b pb-4">
+                      <div>
+                        <div class="font-medium">{alert.patientName}</div>
+                        <div class="text-sm text-muted-foreground">
+                          {alert.alert}
+                        </div>
+                        <div class="text-xs text-muted-foreground">
+                          {alert.time}
+                        </div>
+                      </div>
+                      <Button size="sm" variant="outline">
+                        View
+                      </Button>
+                    </div>
+                  ))
+                }
+              </div>
+            </ScrollArea>
+          </CardContent>
+        </Card>
+
+        {/* Recent Patient Updates */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Recent Patient Updates</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ScrollArea className="h-[400px] pr-4">
+              <div class="space-y-4">
+                <div class="flex items-start gap-4 border-b pb-4">
+                  <Activity className="h-5 w-5 text-muted-foreground" />
+                  <div>
+                    <div class="font-medium">Sarah Johnson</div>
+                    <div class="text-sm text-muted-foreground">
+                      Blood glucose levels normalized
+                    </div>
+                    <div class="text-xs text-muted-foreground">30 mins ago</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4 border-b pb-4">
+                  <Activity className="h-5 w-5 text-muted-foreground" />
+                  <div>
+                    <div class="font-medium">Michael Chen</div>
+                    <div class="text-sm text-muted-foreground">
+                      Updated medication schedule
+                    </div>
+                    <div class="text-xs text-muted-foreground">2 hours ago</div>
+                  </div>
+                </div>
+              </div>
+            </ScrollArea>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  </div>
+</DocLayout>

@@ -1,5 +1,5 @@
 ---
-import AppLayout from '@/layouts/AppLayout.astro';
+import UserLayout from '@/layouts/UserLayout.astro';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -71,7 +71,7 @@ const pastAppointments: Appointment[] = [
 ];
 ---
 
-<AppLayout title="Appointments | GriffinHealth">
+<UserLayout title="Appointments | GriffinHealth">
   <div class="container flex min-h-screen gap-8 p-6">
     {/* Main Content */}
     <div class="flex flex-1 flex-col gap-8 space-y-8">
@@ -200,4 +200,4 @@ const pastAppointments: Appointment[] = [
       </Card>
     </div>
   </div>
-</AppLayout>
+</UserLayout>
