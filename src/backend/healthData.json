@@ -1,83 +1,76 @@
 {
-    "user": {
-        "id": "12345",
-        "name": "John Doe",
-        "age": 35,
-        "gender": "male",
-        "height_cm": 175,
-        "weight_kg": 72,
-        "medical_history": [
-            "hypertension",
-            "type 2 diabetes"
-        ],
-        "allergies": [
-            "peanuts"
-        ],
-        "current_medications": [
-            "metformin"
-        ],
-        "recent_activities": [
-            {
-                "date": "2024-11-01",
-                "steps": 8500,
-                "calories_burned": 300,
-                "heart_rate_avg": 78,
-                "activity_duration_minutes": 45
-            },
-            {
-                "date": "2024-11-02",
-                "steps": 12000,
-                "calories_burned": 500,
-                "heart_rate_avg": 85,
-                "activity_duration_minutes": 60
-            }
-        ],
-        "sleep_data": [
-            {
-                "date": "2024-11-01",
-                "total_sleep_hours": 7.5,
-                "sleep_stages": {
-                    "deep": 2.0,
-                    "light": 3.5,
-                    "rem": 2.0
-                },
-                "sleep_quality_score": 8
-            },
-            {
-                "date": "2024-11-02",
-                "total_sleep_hours": 6.8,
-                "sleep_stages": {
-                    "deep": 1.8,
-                    "light": 3.0,
-                    "rem": 2.0
-                },
-                "sleep_quality_score": 7
-            }
-        ],
-        "last_checkup": "2024-09-15",
-        "smoker": false,
-        "drink_alcohol": true,
-        "blood_pressure": {
-            "systolic": 120,
-            "diastolic": 80,
-            "measurement_time": "2024-11-02T09:00:00Z"
+  "user": {
+    "id": "12345",
+    "name": "John Doe",
+    "age": 35,
+    "gender": "male",
+    "height_cm": 175,
+    "weight_kg": 72,
+    "medical_history": ["hypertension", "type 2 diabetes"],
+    "allergies": ["peanuts"],
+    "current_medications": ["metformin"],
+    "recent_activities": [
+      {
+        "date": "2024-11-01",
+        "steps": 8500,
+        "calories_burned": 300,
+        "heart_rate_avg": 78,
+        "activity_duration_minutes": 45
+      },
+      {
+        "date": "2024-11-02",
+        "steps": 12000,
+        "calories_burned": 500,
+        "heart_rate_avg": 85,
+        "activity_duration_minutes": 60
+      }
+    ],
+    "sleep_data": [
+      {
+        "date": "2024-11-01",
+        "total_sleep_hours": 7.5,
+        "sleep_stages": {
+          "deep": 2.0,
+          "light": 3.5,
+          "rem": 2.0
         },
-        "cholesterol": {
-            "hdl": 50,
-            "ldl": 130,
-            "total": 200,
-            "triglycerides": 150,
-            "last_measured": "2024-10-15"
+        "sleep_quality_score": 8
+      },
+      {
+        "date": "2024-11-02",
+        "total_sleep_hours": 6.8,
+        "sleep_stages": {
+          "deep": 1.8,
+          "light": 3.0,
+          "rem": 2.0
         },
-        "glucose_level": {
-            "fasting": 90,
-            "post_meal": 130,
-            "measurement_time": "2024-11-02T08:00:00Z"
-        },
-        "wellness_metrics": {
-            "stress_level": 6,
-            "mood": "good",
-            "energy_level": 7
-        }
+        "sleep_quality_score": 7
+      }
+    ],
+    "last_checkup": "2024-09-15",
+    "smoker": false,
+    "drink_alcohol": true,
+    "blood_pressure": {
+      "systolic": 120,
+      "diastolic": 80,
+      "measurement_time": "2024-11-02T09:00:00Z"
+    },
+    "cholesterol": {
+      "hdl": 50,
+      "ldl": 130,
+      "total": 200,
+      "triglycerides": 150,
+      "last_measured": "2024-10-15"
+    },
+    "glucose_level": {
+      "fasting": 90,
+      "post_meal": 130,
+      "measurement_time": "2024-11-02T08:00:00Z"
+    },
+    "wellness_metrics": {
+      "stress_level": 6,
+      "mood": "good",
+      "energy_level": 7
     }
+  }
 }
