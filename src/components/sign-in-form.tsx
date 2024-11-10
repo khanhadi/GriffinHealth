@@ -28,7 +28,7 @@ export function SignInForm() {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col space-y-4">
-        <a href={role === 'patient' ? '/dashboard' : '/dashboard-doc'}>
+        <a href={role === 'patient' ? '/metrics' : '/metrics-doc'}>
           <Button className="w-full">Sign in</Button>
         </a>
         <p className="px-6 text-center text-sm text-muted-foreground">
