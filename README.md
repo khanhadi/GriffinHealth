@@ -1,54 +1,63 @@
-# Astro Starter Kit: Basics
+# Griffin Health
 
-```sh
-npm create astro@latest -- --template basics
-```
+## Tackling NHS Waitlists: A Time-Sensitive Challenge
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+How many people around us have suffered or even lost their lives waiting for an overdue medical appointment? Healthcare is often a race against time, yet thousands of individuals are stuck in queues, their needs sometimes escalating as they wait. For many, these delays mean worsening conditions and, in severe cases, a tragic outcome that might have been prevented with earlier intervention. Long NHS waitlists have made healthcare a challenge, not just for patients but for the doctors and healthcare staff working to meet an overwhelming demand. Recognising the critical need to streamline care, our team aimed to tackle this issue by developing a smarter, more dynamic way to prioritise patient needs. We believe no one should have to wait for essential care, especially when technology can help us address the gap.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Efficient Care, Faster Results: Griffin Health's Approach
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+Griffin Health is here to make waiting for care a thing of the past. Picture this: a smart dashboard that gives doctors real-time health insights and enabling them to focus on patients who need immediate attention. With seamless integration of Apple Health data, Griffin Health aims to provide a comprehensive view of a patient’s wellness. Powered by AI agents, it doesn’t just track patient health but also learns from it, offering predictions and suggestions that help GPs make faster, smarter decisions. No more endless waiting — just proactive care when it matters the most, because in healthcare, every second counts.
 
-## 🚀 Project Structure
+## Theme: Travelling Through Time
 
-Inside of your Astro project, you'll see the following folders and files:
+Griffin Health perfectly aligns with the theme "Travelling Through Time." By analysing past trends and anticipating future needs, it empowers doctors to make informed decisions. In doing so, Griffin Health makes 'travel through the time of life' easier for patients by offering them a seamless healthcare experience :)
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+---
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Usage
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+`npm install`
 
-Any static assets, like images, can be placed in the `public/` directory.
+`npm run dev`
 
-## 🧞 Commands
+---
 
-All commands are run from the root of the project, from a terminal:
+## Key Features
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. AI-Powered Health Insights and Future Predictions with Swarm Agents
 
-## 👀 Want to learn more?
+Griffin Health's AI Analysis section integrates a range of AI swarm agents to provide real-time monitoring and dynamic prioritisation. These agents include:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Sleep Agent: Analyses sleep duration across stages (awake, deep, core, REM) to detect irregularities.
+- Respiratory Agent: Monitors respiratory data to identify breathing issues or lung problems.
+- Cardiac Agent: Evaluates heart health and ECG data to spot potential cardiovascular risks.
+- Activity Agent: Tracks walking speed, steps, and distance to assess mobility and overall fitness.
+- Audio Exposure Agent: Analyses the sounds a patient hears to detect possible hearing-related issues or exposure to harmful noise.
+
+By continuously analysing these health indicators, the AI agents detect concerning trends and initiate automatic priority reassessments when needed. This proactive system ensures that patients requiring urgent care are promptly identified, helping GPs make faster, more informed decisions and ultimately, provide quicker appointments to the patients who need them the most.
+
+2. Vector-Based Health Data Storage with RAG
+
+In the backend of Griffin Health, we use a vector-based health data storage system powered by Retrieval-Augmented Generation (RAG). This approach stores and indexes health data using OpenAI embeddings, allowing for efficient retrieval and analysis of historical health trends. Following up on the learnings from our 'Reply' workshop during the GreatUniHack, we chose RAG because it offers more reliable and precise handling of datasets compared to large language models (LLMs). By leveraging RAG, we ensure that health data is not only stored effectively but also easily accessed and analysed, enabling more accurate insights for both doctors and patients.
+
+3. Dashboards and Appointment Scheduling - Frontend
+
+Griffin Health offers visually engaging, interactive dashboards for both doctors and patients, displaying vital health data through dynamic charts and graphs. The soothing teal-green and white color scheme enhances the interface’s aesthetic appeal, making it both attractive and easy to navigate. The appointment scheduling page makes it simple to manage and prioritise appointments. This intuitive design enhances the user experience by turning complex health data into clear, actionable insights.
+
+4. Apple Health Integration
+
+Griffin Health aimed to integrate Apple Health data to provide a comprehensive, real-time view of patient health, tracking metrics like heart rate, sleep, and activity for more informed, proactive care. As part of the process, we developed a simple Swift app to request user permission for accessing Apple Health data and securely transmitting it to our server for analysis. Although, time constraints and server issues prevented full integration into the final project, we were able to test the system using real health data collected from a team member's Apple Watch. This ensured our approach was rooted in real-world data, aligning closely with practical application scenarios.
+
+---
+
+## Technology Stack
+
+- Programming Languages: HTML, CSS, JavaScript, TypeScript
+- Libraries/Frameworks: React, Astro, Chadsn UI Library, OpenAI API
+- Tools: RAG, Swarm AI
+
+---
+
+## Conclusion
+
+To end our project documentation, our team would like to say thank you for this incredible opportunity! Our first hackathon experience at GreatUniHack was a lot of fun — we loved brainstorming ideas, learning new things, and working together to bring our ideas to life. We’ve got a bunch of other features in mind, but our main goal was to create a solid and innovative proof of concept giving the time constraints. Hopefully, Leeds Griffins was a great representation of the University of Leeds :)
