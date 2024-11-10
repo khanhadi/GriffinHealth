@@ -19,7 +19,7 @@ Griffin Health perfectly aligns with the theme "Travelling Through Time." By ana
 npm install
 ```
 
-2. Create a `.env` file in the root directory and add your OpenAI API key: (this is already included in the submission zip)
+2. Create a `.env` file in the root directory and add your OpenAI API key:
 ```env
 PUBLIC_OPENAI_API_KEY=your-openai-api-key-here
 ```
